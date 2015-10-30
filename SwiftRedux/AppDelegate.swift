@@ -12,10 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var store: Store?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let augmentedCreater = applyMiddleware([])(BasicStore.createStore)
+        let store = augmentedCreater(counterReducer, 0)
+        
+        if let viewController = window?.rootViewController as? ViewController {
+            viewController.store = store
+            _ = store.subscribe {
+                viewController.counterChanged()
+            }
+        }
+        
         return true
     }
 

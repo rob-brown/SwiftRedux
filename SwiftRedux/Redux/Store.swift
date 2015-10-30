@@ -21,6 +21,7 @@ public typealias StoreEnhancer = StoreCreator->StoreCreator
 
 public protocol Store {
     func dispatch(action: Action) throws -> Action
+    func dispatchFunction() -> Dispatch
     func currentState() -> State
     func replaceReducer(reducer: Reducer)
     func subscribe(listener: Listener) -> Unsubscriber
@@ -28,11 +29,14 @@ public protocol Store {
     /// Internal use only!
     /// Creates a new, identical store, except with a new reducer.
     /// Do not mutate the called store.
-    func storeWithDispatcher(dispatcher: Dispatch) -> Store
+    func replaceDispatchFunction(dispatcher: Dispatch)
 }
 
 public class BasicStore: Store {
     private var listeners: [String:Listener]
+    private var rootReducer: Reducer
+    private var state: State
+    private var isDispatching: Bool = false
     private lazy var dispatcher: Dispatch = {
         return { action in
             guard self.isDispatching == false else {
@@ -54,9 +58,6 @@ public class BasicStore: Store {
             return action
         }
     }()
-    private var rootReducer: Reducer
-    private var state: State
-    private var isDispatching: Bool = false
     
     private init(reducer: Reducer, initialState: State, dispatcher: Dispatch? = nil, listeners: [String:Listener] = [:]) {
         self.rootReducer = reducer
@@ -67,9 +68,9 @@ public class BasicStore: Store {
         }
     }
     
-    public func createStore(reducer: Reducer, initialState: State) -> Store {
+    public class func createStore(reducer: Reducer, initialState: State) -> Store {
         let store = BasicStore(reducer: reducer, initialState: initialState)
-        dispatchInit()
+        store.dispatchInit()
         return store
     }
     
@@ -77,13 +78,17 @@ public class BasicStore: Store {
         return state
     }
     
-    public func storeWithDispatcher(dispatcher: Dispatch) -> Store {
-        return BasicStore(reducer: rootReducer, initialState: state, dispatcher: dispatcher, listeners: listeners)
+    public func replaceDispatchFunction(dispatcher: Dispatch) {
+        self.dispatcher = dispatcher
     }
     
     public func dispatch(action: Action) throws -> Action {
         // ???: Should this ensure the dispatch happens on a particular queue?
         return try dispatcher(action)
+    }
+    
+    public func dispatchFunction() -> Dispatch {
+        return dispatcher
     }
     
     public func replaceReducer(reducer: Reducer) {
@@ -96,7 +101,7 @@ public class BasicStore: Store {
         let key = NSUUID().UUIDString
         listeners[key] = listener
         return {
-            listeners.removeValueForKey(key)
+            self.listeners.removeValueForKey(key)
         }
     }
     

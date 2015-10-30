@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11297A81BE2F426003B6C2A /* CounterReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11297A71BE2F426003B6C2A /* CounterReducer.swift */; };
 		E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */; };
 		E1F1F5EB1BE19A1F00F6B879 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5EA1BE19A1F00F6B879 /* ViewController.swift */; };
 		E1F1F5EE1BE19A1F00F6B879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */; };
@@ -14,11 +15,10 @@
 		E1F1F5F31BE19A1F00F6B879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5F11BE19A1F00F6B879 /* LaunchScreen.storyboard */; };
 		E1F1F5FE1BE19A1F00F6B879 /* SwiftReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5FD1BE19A1F00F6B879 /* SwiftReduxTests.swift */; };
 		E1F1F6091BE19A1F00F6B879 /* SwiftReduxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6081BE19A1F00F6B879 /* SwiftReduxUITests.swift */; };
-		E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6171BE19AA500F6B879 /* Store.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F1F61A1BE19AB300F6B879 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6191BE19AB300F6B879 /* Action.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F1F61E1BE1A7FB00F6B879 /* MessageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F61D1BE1A7FB00F6B879 /* MessageRouter.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F1F6201BE1E7ED00F6B879 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F61F1BE1E7ED00F6B879 /* Middleware.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F1F6221BE1E98800F6B879 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6211BE1E98800F6B879 /* Reducer.swift */; settings = {ASSET_TAGS = (); }; };
+		E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6171BE19AA500F6B879 /* Store.swift */; };
+		E1F1F61A1BE19AB300F6B879 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6191BE19AB300F6B879 /* Action.swift */; };
+		E1F1F6201BE1E7ED00F6B879 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F61F1BE1E7ED00F6B879 /* Middleware.swift */; };
+		E1F1F6221BE1E98800F6B879 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F6211BE1E98800F6B879 /* Reducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E11297A71BE2F426003B6C2A /* CounterReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterReducer.swift; sourceTree = "<group>"; };
 		E1F1F5E51BE19A1F00F6B879 /* SwiftRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F1F5EA1BE19A1F00F6B879 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		E1F1F60A1BE19A1F00F6B879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1F1F6171BE19AA500F6B879 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Store.swift; path = Redux/Store.swift; sourceTree = "<group>"; };
 		E1F1F6191BE19AB300F6B879 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Redux/Action.swift; sourceTree = "<group>"; };
-		E1F1F61D1BE1A7FB00F6B879 /* MessageRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageRouter.swift; path = Redux/MessageRouter.swift; sourceTree = "<group>"; };
 		E1F1F61F1BE1E7ED00F6B879 /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Middleware.swift; path = Redux/Middleware.swift; sourceTree = "<group>"; };
 		E1F1F6211BE1E98800F6B879 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = Redux/Reducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +109,7 @@
 			children = (
 				E1F1F6161BE19A8C00F6B879 /* Redux */,
 				E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */,
+				E11297A71BE2F426003B6C2A /* CounterReducer.swift */,
 				E1F1F5EA1BE19A1F00F6B879 /* ViewController.swift */,
 				E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */,
 				E1F1F5EF1BE19A1F00F6B879 /* Assets.xcassets */,
@@ -143,7 +144,6 @@
 				E1F1F6211BE1E98800F6B879 /* Reducer.swift */,
 				E1F1F61F1BE1E7ED00F6B879 /* Middleware.swift */,
 				E1F1F6191BE19AB300F6B879 /* Action.swift */,
-				E1F1F61D1BE1A7FB00F6B879 /* MessageRouter.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -278,12 +278,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1F1F61E1BE1A7FB00F6B879 /* MessageRouter.swift in Sources */,
 				E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */,
 				E1F1F61A1BE19AB300F6B879 /* Action.swift in Sources */,
 				E1F1F6201BE1E7ED00F6B879 /* Middleware.swift in Sources */,
 				E1F1F6221BE1E98800F6B879 /* Reducer.swift in Sources */,
 				E1F1F5EB1BE19A1F00F6B879 /* ViewController.swift in Sources */,
+				E11297A81BE2F426003B6C2A /* CounterReducer.swift in Sources */,
 				E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +511,7 @@
 				E1F1F60F1BE19A1F00F6B879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1F1F6101BE19A1F00F6B879 /* Build configuration list for PBXNativeTarget "SwiftReduxTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +520,7 @@
 				E1F1F6121BE19A1F00F6B879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1F1F6131BE19A1F00F6B879 /* Build configuration list for PBXNativeTarget "SwiftReduxUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +529,7 @@
 				E1F1F6151BE19A1F00F6B879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

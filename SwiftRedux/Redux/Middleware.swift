@@ -16,12 +16,14 @@ public func applyMiddleware(middlewares: [Middleware]) -> StoreEnhancer {
     return { (next: StoreCreator) in
         return { (reducer: Reducer, initialState: State) in
             let store = next(reducer, initialState)
-            let middlewareAPI = (dispatch: store.dispatch, currentState: store.currentState)
-            let newDispatch = middlewares.reverse().reduce(store.dispatch) { intermediateDispatch, middleware in
+            let dispatch = store.dispatchFunction()
+            let middlewareAPI = (dispatch: dispatch, currentState: store.currentState)
+            let newDispatch = middlewares.reverse().reduce(dispatch) { intermediateDispatch, middleware in
                 return middleware(middlewareAPI)(intermediateDispatch)
             }
+            store.replaceDispatchFunction(newDispatch)
             
-            return store.storeWithDispatcher(newDispatch)
+            return store
         }
     }
 }
