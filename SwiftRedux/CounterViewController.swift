@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CounterViewController.swift
 //  SwiftRedux
 //
 //  Created by Robert Brown on 10/28/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CounterViewController: UIViewController {
 
     @IBOutlet weak var counterLabel: UILabel!
     var store: Store?
@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     }
     
     func counterChanged() {
-        guard let count = store?.currentState() as? Int else { return }
-        counterLabel.text = String(count)
+        guard let state = store?.currentState() as? AppState else { return }
+        counterLabel.text = String(state.counter)
     }
     
     @IBAction func tappedIncrement(sender: AnyObject) {

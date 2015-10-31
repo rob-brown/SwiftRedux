@@ -1,5 +1,5 @@
 //
-//  CounterReducer.swift
+//  Counter.swift
 //  SwiftRedux
 //
 //  Created by Robert Brown on 10/29/15.
@@ -13,7 +13,7 @@ public enum CounterAction: String {
     case Decrement = "Decrement"
 }
 
-public func counterReducer(state: State, action: Action) -> State {
+public func counterReducer(state: State, action: Action) throws -> State {
     guard let counter = state as? Int else { return state }
     guard let actionType = CounterAction(rawValue: action.type) else { return state }
     

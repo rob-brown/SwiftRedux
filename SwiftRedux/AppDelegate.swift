@@ -8,6 +8,19 @@
 
 import UIKit
 
+public func rootReducer(state: State, action: Action) throws -> State {
+    guard let state = state as? AppState else {
+        let info = [NSLocalizedDescriptionKey: "Reducer expected AppState"]
+        throw NSError(domain: __FILE__, code: __LINE__, userInfo: info)
+    }
+    guard let counter = (try? counterReducer(state.counter, action: action)) as? Int else { return state }
+    guard let todos = (try? toDoReducer(state.todos, action: action)) as? [ToDo] else { return state }
+    
+    return AppState(counter: counter, todos: todos)
+}
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,13 +28,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var store: Store?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let initialState = AppState(counter: 0, todos: [])
         let augmentedCreater = applyMiddleware([])(BasicStore.createStore)
-        let store = augmentedCreater(counterReducer, 0)
+        let store = augmentedCreater(rootReducer, initialState)
         
-        if let viewController = window?.rootViewController as? ViewController {
-            viewController.store = store
-            _ = store.subscribe {
-                viewController.counterChanged()
+        if let tabController = window?.rootViewController as? UITabBarController {
+            
+            if let viewController = tabController.viewControllers![0] as? CounterViewController {
+                viewController.store = store
+                _ = store.subscribe {
+                    viewController.counterChanged()
+                }
+            }
+            
+            if let viewController = tabController.viewControllers![1] as? ToDoViewController {
+                viewController.store = store
+                _ = store.subscribe {
+                    viewController.todosChanged()
+                }
             }
         }
         

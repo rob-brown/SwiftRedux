@@ -12,7 +12,7 @@ public enum InternalAction: String {
     case Init = "SwiftRedux/Init"
 }
 
-public typealias State = AnyObject
+public typealias State = Any
 public typealias Listener = Void->Void
 public typealias Unsubscriber = Void->Void
 public typealias Dispatch = Action throws->Action
@@ -21,14 +21,14 @@ public typealias StoreEnhancer = StoreCreator->StoreCreator
 
 public protocol Store {
     func dispatch(action: Action) throws -> Action
-    func dispatchFunction() -> Dispatch
     func currentState() -> State
     func replaceReducer(reducer: Reducer)
     func subscribe(listener: Listener) -> Unsubscriber
     
     /// Internal use only!
-    /// Creates a new, identical store, except with a new reducer.
-    /// Do not mutate the called store.
+    func dispatchFunction() -> Dispatch
+    
+    /// Internal use only!
     func replaceDispatchFunction(dispatcher: Dispatch)
 }
 
