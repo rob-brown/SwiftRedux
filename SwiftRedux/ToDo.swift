@@ -30,6 +30,7 @@ public enum ToDoAction: String {
 
 public struct ToDoActionCreater {
     public static func create(text: String) -> Action {
+        
         return BasicAction(type: ToDoAction.CreateToDo.rawValue, payload: text)
     }
     
@@ -38,21 +39,17 @@ public struct ToDoActionCreater {
     }
 }
 
-public func toDoReducer(state: State, action: Action) throws -> State {
-    guard let todos = state as? [ToDo] else {
-        let info = [NSLocalizedDescriptionKey: "Expected state as [ToDo]"]
-        throw NSError(domain: __FILE__, code: __LINE__, userInfo: info)
-    }
+let toDoReducer = Reducer<[ToDo]> { state, action in
     guard let actionType = ToDoAction(rawValue: action.type) else { return state }
     
     switch actionType {
     case .CreateToDo:
         guard let action = action as? StandardAction, text = action.payload as? String else { break }
         let todo = ToDo(text: text)
-        return [todo] + todos
+        return [todo] + state
     case .MarkCompleted:
         guard let action = action as? StandardAction, index = action.payload as? Int else { break }
-        var mutableTodos = todos
+        var mutableTodos = state
         let todo = mutableTodos.removeAtIndex(index)
         let completed = ToDo(original: todo, completed: true)
         return mutableTodos + [completed]

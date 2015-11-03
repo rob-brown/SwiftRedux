@@ -8,29 +8,25 @@
 
 import UIKit
 
-public func rootReducer(state: State, action: Action) throws -> State {
-    guard let state = state as? AppState else {
-        let info = [NSLocalizedDescriptionKey: "Reducer expected AppState"]
-        throw NSError(domain: __FILE__, code: __LINE__, userInfo: info)
-    }
-    guard let counter = (try? counterReducer(state.counter, action: action)) as? Int else { return state }
-    guard let todos = (try? toDoReducer(state.todos, action: action)) as? [ToDo] else { return state }
+let rootReducer = Reducer<AppState> { state, action in
+    let counter = try counterReducer.reduce(state.counter, action: action)
+    let todos = try toDoReducer.reduce(state.todos, action: action)
     
     return AppState(counter: counter, todos: todos)
 }
-
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var store: Store?
+    var store: Store<AppState>?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let middlewares = [Middleware<AppState>]()
+        let createStore = StoreCreator<AppState>(function: Store<AppState>.createStore)
+        let augmentedCreater = Middleware.apply(middlewares).enhance(createStore)
         let initialState = AppState(counter: 0, todos: [])
-        let augmentedCreater = applyMiddleware([])(BasicStore.createStore)
-        let store = augmentedCreater(rootReducer, initialState)
+        let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
         
         if let tabController = window?.rootViewController as? UITabBarController {
             

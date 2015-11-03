@@ -12,29 +12,14 @@ public enum InternalAction: String {
     case Init = "SwiftRedux/Init"
 }
 
-public typealias State = Any
 public typealias Listener = Void->Void
 public typealias Unsubscriber = Void->Void
 public typealias Dispatch = Action throws->Action
-public typealias StoreCreator = (Reducer,State)->Store
-public typealias StoreEnhancer = StoreCreator->StoreCreator
 
-public protocol Store {
-    func dispatch(action: Action) throws -> Action
-    func currentState() -> State
-    func replaceReducer(reducer: Reducer)
-    func subscribe(listener: Listener) -> Unsubscriber
-    
-    /// Internal use only!
-    func dispatchFunction() -> Dispatch
-    
-    /// Internal use only!
-    func replaceDispatchFunction(dispatcher: Dispatch)
-}
-
-public class BasicStore: Store {
+public class Store<T> {
+    public typealias State = T
     private var listeners: [String:Listener]
-    private var rootReducer: Reducer
+    private var rootReducer: Reducer<State>
     private var state: State
     private var isDispatching: Bool = false
     private lazy var dispatcher: Dispatch = {
@@ -45,7 +30,7 @@ public class BasicStore: Store {
             }
             do {
                 self.isDispatching = true
-                self.state = try self.rootReducer(self.state, action)
+                self.state = try self.rootReducer.reduce(self.state, action: action)
             }
             catch let error {
                 // defer isn't working, so I have to catch and rethrow.
@@ -59,7 +44,7 @@ public class BasicStore: Store {
         }
     }()
     
-    private init(reducer: Reducer, initialState: State, dispatcher: Dispatch? = nil, listeners: [String:Listener] = [:]) {
+    private init(reducer: Reducer<State>, initialState: State, dispatcher: Dispatch? = nil, listeners: [String:Listener] = [:]) {
         self.rootReducer = reducer
         self.state = initialState
         self.listeners = listeners
@@ -68,8 +53,8 @@ public class BasicStore: Store {
         }
     }
     
-    public class func createStore(reducer: Reducer, initialState: State) -> Store {
-        let store = BasicStore(reducer: reducer, initialState: initialState)
+    public class func createStore(reducer: Reducer<State>, initialState: State) -> Store<State> {
+        let store = Store(reducer: reducer, initialState: initialState)
         store.dispatchInit()
         return store
     }
@@ -91,7 +76,7 @@ public class BasicStore: Store {
         return dispatcher
     }
     
-    public func replaceReducer(reducer: Reducer) {
+    public func replaceReducer(reducer: Reducer<State>) {
         rootReducer = reducer
         dispatchInit()
     }

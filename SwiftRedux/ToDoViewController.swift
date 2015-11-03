@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoViewController: UITableViewController {
 
-    var store: Store?
+    var store: Store<AppState>?
     private var todos = [ToDo]()
     
     override func viewDidLoad() {
@@ -19,8 +19,7 @@ class ToDoViewController: UITableViewController {
     }
     
     func todosChanged() {
-        guard let state = store?.currentState() as? AppState else { return }
-        todos = state.todos
+        todos = store?.currentState().todos ?? todos
         tableView.reloadData()
     }
     

@@ -11,7 +11,7 @@ import UIKit
 class CounterViewController: UIViewController {
 
     @IBOutlet weak var counterLabel: UILabel!
-    var store: Store?
+    var store: Store<AppState>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,12 @@ class CounterViewController: UIViewController {
     }
     
     func counterChanged() {
-        guard let state = store?.currentState() as? AppState else { return }
-        counterLabel.text = String(state.counter)
+        if let count = store?.currentState().counter {
+            counterLabel.text = String(count)
+        }
+        else {
+            counterLabel.text = "N/A"
+        }
     }
     
     @IBAction func tappedIncrement(sender: AnyObject) {
