@@ -30,7 +30,6 @@ public enum ToDoAction: String {
 
 public struct ToDoActionCreater {
     public static func create(text: String) -> Action {
-        
         return BasicAction(type: ToDoAction.CreateToDo.rawValue, payload: text)
     }
     

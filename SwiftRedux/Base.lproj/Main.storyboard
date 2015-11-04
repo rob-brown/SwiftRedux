@@ -66,24 +66,24 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="YqK-cN-4Qx"/>
-                        <segue destination="oQR-4X-sXq" kind="relationship" relationship="viewControllers" id="cBS-t3-kXP"/>
+                        <segue destination="GVZ-l2-aaQ" kind="relationship" relationship="viewControllers" id="cBS-t3-kXP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHL-Fq-13Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-457" y="606"/>
+            <point key="canvasLocation" x="-1021" y="1000"/>
         </scene>
         <!--To Do-->
         <scene sceneID="A3K-88-ojO">
             <objects>
-                <tableViewController id="oQR-4X-sXq" sceneMemberID="viewController">
+                <tableViewController id="oQR-4X-sXq" customClass="ToDoViewController" customModule="SwiftRedux" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Uab-iw-We2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" textLabel="9jI-ym-uIN" style="IBUITableViewCellStyleDefault" id="iUs-ha-Glo">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUs-ha-Glo" id="rBD-59-qpE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -105,11 +105,36 @@
                             <outlet property="delegate" destination="oQR-4X-sXq" id="rij-9L-Diz"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="To Do" id="jKp-He-m0N"/>
+                    <navigationItem key="navigationItem" title="To Do" id="hv1-xq-o0D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KYd-3E-8Ux">
+                            <connections>
+                                <action selector="tappedAdd:" destination="oQR-4X-sXq" id="RHw-1N-mFw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TD6-52-8OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="419" y="1099"/>
+            <point key="canvasLocation" x="610" y="1419"/>
+        </scene>
+        <!--To Do-->
+        <scene sceneID="rGE-At-en5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GVZ-l2-aaQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="To Do" id="jKp-He-m0N"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Jx-RT-yv9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oQR-4X-sXq" kind="relationship" relationship="rootViewController" id="kTy-Ic-1ZF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhI-2r-65Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-202" y="1419"/>
         </scene>
     </scenes>
 </document>

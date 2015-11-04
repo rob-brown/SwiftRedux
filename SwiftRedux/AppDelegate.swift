@@ -37,12 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            if let viewController = tabController.viewControllers![1] as? ToDoViewController {
-                viewController.store = store
-                _ = store.subscribe {
-                    viewController.todosChanged()
+            if let navController = tabController.viewControllers![1] as? UINavigationController {
+                if let viewController = navController.topViewController as? ToDoViewController {
+                    viewController.store = store
+                    _ = store.subscribe {
+                        viewController.todosChanged()
+                    }
                 }
             }
+            
         }
         
         return true
