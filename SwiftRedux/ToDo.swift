@@ -26,6 +26,7 @@ public struct ToDo {
 public enum ToDoAction: String {
     case CreateToDo = "CreateToDo"
     case MarkCompleted = "MarkCompleted"
+    case Restart = "Restart"
 }
 
 public struct ToDoActionCreater {
@@ -35,6 +36,10 @@ public struct ToDoActionCreater {
     
     public static func complete(index: Int) -> Action {
         return BasicAction(type: ToDoAction.MarkCompleted.rawValue, payload: index)
+    }
+    
+    public static func restart(index: Int) -> Action {
+        return BasicAction(type: ToDoAction.Restart.rawValue, payload: index)
     }
 }
 
@@ -52,6 +57,12 @@ let toDoReducer = Reducer<[ToDo]> { state, action in
         let todo = mutableTodos.removeAtIndex(index)
         let completed = ToDo(original: todo, completed: true)
         return mutableTodos + [completed]
+    case .Restart:
+        guard let action = action as? StandardAction, index = action.payload as? Int else { break }
+        var mutableTodos = state
+        let todo = mutableTodos.removeAtIndex(index)
+        let restarted = ToDo(original: todo, completed: false)
+        return [restarted] + mutableTodos
     }
     
     return state

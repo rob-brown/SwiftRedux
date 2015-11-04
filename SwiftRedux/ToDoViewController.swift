@@ -52,8 +52,13 @@ class ToDoViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let todo = todos[indexPath.row]
-        guard todo.completed == false else { return }
-        let action = ToDoActionCreater.complete(indexPath.row)
+        let action: Action
+        if todo.completed {
+            action = ToDoActionCreater.restart(indexPath.row)
+        }
+        else {
+            action = ToDoActionCreater.complete(indexPath.row)
+        }
         _ = try? store?.dispatch(action)
     }
 }
