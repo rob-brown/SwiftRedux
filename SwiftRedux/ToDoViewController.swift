@@ -9,17 +9,23 @@
 import UIKit
 
 class ToDoViewController: UITableViewController {
-
+    
     var store: Store<AppState>?
+    var notifier: Notifier?
     private var todos = [ToDo]()
+    private var unsubscriber: Unsubscriber?
+    
+    deinit {
+        unsubscriber?()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        todosChanged()
+        unsubscriber = notifier?.subscribeToToDos(todosChanged)
     }
     
-    func todosChanged() {
-        todos = store?.currentState().todos ?? todos
+    func todosChanged(todos: [ToDo]) {
+        self.todos = todos
         tableView.reloadData()
     }
     

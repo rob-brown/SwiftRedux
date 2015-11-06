@@ -27,22 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let augmentedCreater = Middleware.apply(middlewares).enhance(createStore)
         let initialState = AppState(counter: 0, todos: [])
         let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
+        let notifier = Notifier(store: store)
         
         if let tabController = window?.rootViewController as? UITabBarController {
             
             if let viewController = tabController.viewControllers![0] as? CounterViewController {
                 viewController.store = store
-                _ = store.subscribe {
-                    viewController.counterChanged()
-                }
+                viewController.notifier = notifier
             }
             
             if let navController = tabController.viewControllers![1] as? UINavigationController {
                 if let viewController = navController.topViewController as? ToDoViewController {
                     viewController.store = store
-                    _ = store.subscribe {
-                        viewController.todosChanged()
-                    }
+                    viewController.notifier = notifier
                 }
             }
             

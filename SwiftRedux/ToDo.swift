@@ -23,6 +23,12 @@ public struct ToDo {
     }
 }
 
+public func ==(lhs: ToDo, rhs: ToDo) -> Bool {
+    return lhs.text == rhs.text && lhs.completed == rhs.completed
+}
+
+extension ToDo: Equatable {}
+
 public enum ToDoAction: String {
     case CreateToDo = "CreateToDo"
     case MarkCompleted = "MarkCompleted"
