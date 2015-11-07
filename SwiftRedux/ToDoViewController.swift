@@ -10,23 +10,38 @@ import UIKit
 
 class ToDoViewController: UITableViewController {
     
-    var store: Store<AppState>?
+    @IBOutlet weak var undoButton: UIBarButtonItem?
+    @IBOutlet weak var redoButton: UIBarButtonItem?
+    
+    var store: Store<History<AppState>>?
     var notifier: Notifier?
     private var todos = [ToDo]()
-    private var unsubscriber: Unsubscriber?
+    private var unsubscribers = [Unsubscriber]()
     
     deinit {
-        unsubscriber?()
+        unsubscribers.forEach { $0() }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        unsubscriber = notifier?.subscribeToToDos(todosChanged)
+        
+        guard let notifier = notifier else { return }
+        unsubscribers += [notifier.todoNotifier.subscribe(todosChanged)]
+        unsubscribers += [notifier.canUndoNotifier.subscribe(canUndoChanged)]
+        unsubscribers += [notifier.canRedoNotifier.subscribe(canRedoChanged)]
     }
     
     func todosChanged(todos: [ToDo]) {
         self.todos = todos
         tableView.reloadData()
+    }
+    
+    func canUndoChanged(canUndo: Bool) {
+        undoButton?.enabled = canUndo
+    }
+    
+    func canRedoChanged(canRedo: Bool) {
+        redoButton?.enabled = canRedo
     }
     
     @IBAction func tappedAdd(sender: UIBarButtonItem) {
@@ -41,6 +56,16 @@ class ToDoViewController: UITableViewController {
         alert.addAction(create)
         alert.addTextFieldWithConfigurationHandler { textField in }
         showDetailViewController(alert, sender: nil)
+    }
+    
+    @IBAction func tappedUndo(sender: UIBarButtonItem) {
+        let action = HistoryAction.createUndo()
+        _ = try? store?.dispatch(action)
+    }
+    
+    @IBAction func tappedRedo(sender: UIBarButtonItem) {
+        let action = HistoryAction.createRedo()
+        _ = try? store?.dispatch(action)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

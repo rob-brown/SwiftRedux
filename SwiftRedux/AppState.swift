@@ -17,3 +17,9 @@ public class AppState {
         self.todos = todos
     }
 }
+
+public func ==(lhs: AppState, rhs: AppState) -> Bool {
+    return lhs.counter == rhs.counter && lhs.todos == rhs.todos
+}
+
+extension AppState: Equatable {}

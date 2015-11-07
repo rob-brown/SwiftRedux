@@ -11,7 +11,7 @@ import UIKit
 class CounterViewController: UIViewController {
 
     @IBOutlet weak var counterLabel: UILabel!
-    var store: Store<AppState>?
+    var store: Store<History<AppState>>?
     var notifier: Notifier?
     private var unsubscriber: Unsubscriber?
     
@@ -21,7 +21,7 @@ class CounterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        unsubscriber = notifier?.subscribeToCounter(counterChanged)
+        unsubscriber = notifier?.counterNotifier.subscribe(counterChanged)
     }
     
     func counterChanged(counter: Int) {

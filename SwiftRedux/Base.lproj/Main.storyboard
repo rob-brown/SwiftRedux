@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0ma-6F-HV4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Counter-->
@@ -106,12 +107,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do" id="hv1-xq-o0D">
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="undo" id="0OJ-rg-KYg">
+                                <connections>
+                                    <action selector="tappedUndo:" destination="oQR-4X-sXq" id="9kY-KO-yY8"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="redo" id="GQC-33-ZN3">
+                                <connections>
+                                    <action selector="tappedRedo:" destination="oQR-4X-sXq" id="Nxz-bg-08m"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KYd-3E-8Ux">
                             <connections>
                                 <action selector="tappedAdd:" destination="oQR-4X-sXq" id="RHw-1N-mFw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="redoButton" destination="GQC-33-ZN3" id="GJr-4P-4AF"/>
+                        <outlet property="undoButton" destination="0OJ-rg-KYg" id="5tX-xd-lAN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TD6-52-8OT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

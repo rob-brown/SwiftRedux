@@ -8,7 +8,7 @@
 
 import UIKit
 
-let rootReducer = Reducer<AppState> { state, action in
+let appStateReducer = Reducer<AppState> { state, action in
     let counter = try counterReducer.reduce(state.counter, action: action)
     let todos = try toDoReducer.reduce(state.todos, action: action)
     
@@ -17,15 +17,17 @@ let rootReducer = Reducer<AppState> { state, action in
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    typealias State = History<AppState>
+    
     var window: UIWindow?
-    var store: Store<AppState>?
+    var store: Store<State>?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let middlewares = [Middleware<AppState>]()
-        let createStore = StoreCreator<AppState>(function: Store<AppState>.createStore)
+        let rootReducer = historyReducerCreator(appStateReducer)
+        let middlewares = [Middleware<State>]()
+        let createStore = StoreCreator<State>(function: Store<State>.createStore)
         let augmentedCreater = Middleware.apply(middlewares).enhance(createStore)
-        let initialState = AppState(counter: 0, todos: [])
+        let initialState = History(current: AppState(counter: 0, todos: []))
         let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
         let notifier = Notifier(store: store)
         
