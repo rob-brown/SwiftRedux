@@ -14,6 +14,8 @@
 		E15350CC1BE46EE300211F6D /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15350CB1BE46EE300211F6D /* ToDoViewController.swift */; };
 		E15350CE1BE471B700211F6D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15350CD1BE471B700211F6D /* AppState.swift */; };
 		E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */; };
+		E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */; };
+		E1E913E81BF30C1D00FD3BA9 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */; };
 		E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */; };
 		E1F1F5EB1BE19A1F00F6B879 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */; };
 		E1F1F5EE1BE19A1F00F6B879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 		E15350CB1BE46EE300211F6D /* ToDoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		E15350CD1BE471B700211F6D /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
+		E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Redux/ArrayExtension.swift; sourceTree = "<group>"; };
 		E1F1F5E51BE19A1F00F6B879 /* SwiftRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				E11297AB1BE32987003B6C2A /* ToDo.swift */,
 				E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */,
 				E15350CB1BE46EE300211F6D /* ToDoViewController.swift */,
+				E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */,
 				E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */,
 				E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */,
 				E1F1F5EF1BE19A1F00F6B879 /* Assets.xcassets */,
@@ -162,6 +167,7 @@
 				E1F1F6191BE19AB300F6B879 /* Action.swift */,
 				E100C8FA1BEDC25C008B83E3 /* History.swift */,
 				E100C8FC1BEDD6E2008B83E3 /* DiffNotifier.swift */,
+				E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -296,11 +302,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E913E81BF30C1D00FD3BA9 /* ArrayExtension.swift in Sources */,
 				E11297AC1BE32987003B6C2A /* ToDo.swift in Sources */,
 				E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */,
 				E15350CE1BE471B700211F6D /* AppState.swift in Sources */,
 				E100C8FD1BEDD6E2008B83E3 /* DiffNotifier.swift in Sources */,
 				E100C8FB1BEDC25C008B83E3 /* History.swift in Sources */,
+				E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */,
 				E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */,
 				E1F1F61A1BE19AB300F6B879 /* Action.swift in Sources */,
 				E1F1F6201BE1E7ED00F6B879 /* Middleware.swift in Sources */,

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let middlewares = [Middleware<State>]()
         let createStore = StoreCreator<State>(function: Store<State>.createStore)
         let augmentedCreater = Middleware.apply(middlewares).enhance(createStore)
-        let initialState = History(current: AppState(counter: 0, todos: []))
+        let initialState = History(state: AppState(counter: 0, todos: []))
         let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
         let notifier = Notifier(store: store)
         

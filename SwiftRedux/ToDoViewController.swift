@@ -29,6 +29,10 @@ class ToDoViewController: UITableViewController {
         unsubscribers += [notifier.todoNotifier.subscribe(todosChanged)]
         unsubscribers += [notifier.canUndoNotifier.subscribe(canUndoChanged)]
         unsubscribers += [notifier.canRedoNotifier.subscribe(canRedoChanged)]
+        
+        let gesture = UITapGestureRecognizer(target: self, action: "showHistory")
+        gesture.numberOfTapsRequired = 3
+        view.addGestureRecognizer(gesture)
     }
     
     func todosChanged(todos: [ToDo]) {
@@ -58,14 +62,11 @@ class ToDoViewController: UITableViewController {
         showDetailViewController(alert, sender: nil)
     }
     
-    @IBAction func tappedUndo(sender: UIBarButtonItem) {
-        let action = HistoryAction.createUndo()
-        _ = try? store?.dispatch(action)
-    }
-    
-    @IBAction func tappedRedo(sender: UIBarButtonItem) {
-        let action = HistoryAction.createRedo()
-        _ = try? store?.dispatch(action)
+    func showHistory() {
+        guard let store = store, notifier = notifier else { return }
+        let history = HistoryViewController(store: store, notifier: notifier)
+        let navController = UINavigationController(rootViewController: history)
+        showDetailViewController(navController, sender: nil)
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
