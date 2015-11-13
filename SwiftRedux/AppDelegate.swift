@@ -26,7 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootReducer = historyReducerCreator(appStateReducer)
         let middlewares = [Middleware<State>]()
         let createStore = StoreCreator<State>(function: Store<State>.createStore)
-        let augmentedCreater = Middleware.apply(middlewares).enhance(createStore)
+        
+        // TODO: Create a pipe operator to clean up function composition.
+        
+        let middlewareStoreCreator = Middleware.apply(middlewares).enhance(createStore)
+        let augmentedCreater = Persist.enhancer("A session ID", persister: appStatePersister).enhance(middlewareStoreCreator)
+        
         let initialState = History(state: AppState(counter: 0, todos: []))
         let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
         let notifier = Notifier(store: store)

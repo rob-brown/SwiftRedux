@@ -16,6 +16,9 @@
 		E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */; };
 		E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */; };
 		E1E913E81BF30C1D00FD3BA9 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */; };
+		E1E914061BF43D8200FD3BA9 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914051BF43D8200FD3BA9 /* Persist.swift */; };
+		E1E914081BF45B2D00FD3BA9 /* StoreEnhancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914071BF45B2D00FD3BA9 /* StoreEnhancer.swift */; };
+		E1E9140A1BF464A200FD3BA9 /* StoreCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914091BF464A200FD3BA9 /* StoreCreator.swift */; };
 		E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */; };
 		E1F1F5EB1BE19A1F00F6B879 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */; };
 		E1F1F5EE1BE19A1F00F6B879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtension.swift; path = Redux/ArrayExtension.swift; sourceTree = "<group>"; };
+		E1E914051BF43D8200FD3BA9 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persist.swift; path = Redux/Persist.swift; sourceTree = "<group>"; };
+		E1E914071BF45B2D00FD3BA9 /* StoreEnhancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreEnhancer.swift; path = Redux/StoreEnhancer.swift; sourceTree = "<group>"; };
+		E1E914091BF464A200FD3BA9 /* StoreCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreCreator.swift; path = Redux/StoreCreator.swift; sourceTree = "<group>"; };
 		E1F1F5E51BE19A1F00F6B879 /* SwiftRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
@@ -162,12 +168,15 @@
 			isa = PBXGroup;
 			children = (
 				E1F1F6171BE19AA500F6B879 /* Store.swift */,
+				E1E914071BF45B2D00FD3BA9 /* StoreEnhancer.swift */,
+				E1E914091BF464A200FD3BA9 /* StoreCreator.swift */,
 				E1F1F6211BE1E98800F6B879 /* Reducer.swift */,
 				E1F1F61F1BE1E7ED00F6B879 /* Middleware.swift */,
 				E1F1F6191BE19AB300F6B879 /* Action.swift */,
 				E100C8FA1BEDC25C008B83E3 /* History.swift */,
 				E100C8FC1BEDD6E2008B83E3 /* DiffNotifier.swift */,
 				E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */,
+				E1E914051BF43D8200FD3BA9 /* Persist.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -304,9 +313,12 @@
 			files = (
 				E1E913E81BF30C1D00FD3BA9 /* ArrayExtension.swift in Sources */,
 				E11297AC1BE32987003B6C2A /* ToDo.swift in Sources */,
+				E1E9140A1BF464A200FD3BA9 /* StoreCreator.swift in Sources */,
+				E1E914061BF43D8200FD3BA9 /* Persist.swift in Sources */,
 				E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */,
 				E15350CE1BE471B700211F6D /* AppState.swift in Sources */,
 				E100C8FD1BEDD6E2008B83E3 /* DiffNotifier.swift in Sources */,
+				E1E914081BF45B2D00FD3BA9 /* StoreEnhancer.swift in Sources */,
 				E100C8FB1BEDC25C008B83E3 /* History.swift in Sources */,
 				E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */,
 				E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */,

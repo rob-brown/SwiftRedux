@@ -8,35 +8,6 @@
 
 import Foundation
 
-public struct StoreCreator<T> {
-    public typealias State = T
-    public typealias StoreCreatorFunction = (Reducer<State>,State)->Store<State>
-    
-    let function: StoreCreatorFunction
-    
-    public init(function: StoreCreatorFunction) {
-        self.function = function
-    }
-    
-    public func createStore(reducer reducer: Reducer<T>, initialState: State) -> Store<State> {
-        return function(reducer, initialState)
-    }
-}
-
-public struct StoreEnhancer<T,U> {
-    public typealias StoreEnhancerFunction = StoreCreator<T>->StoreCreator<U>
-    
-    private let function: StoreEnhancerFunction
-    
-    public init(function: StoreEnhancerFunction) {
-        self.function = function
-    }
-    
-    public func enhance(creator: StoreCreator<T>) -> StoreCreator<U> {
-        return self.function(creator)
-    }
-}
-
 public struct Middleware<T> {
     public typealias State = T
     public typealias StateFetcher = Void->State

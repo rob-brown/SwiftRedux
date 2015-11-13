@@ -23,3 +23,70 @@ public func ==(lhs: AppState, rhs: AppState) -> Bool {
 }
 
 extension AppState: Equatable {}
+
+public struct AppStateError: ErrorType {
+    public let message: String
+    
+    public init(_ message: String) {
+        self.message = message
+    }
+}
+
+public func appStateSerializer(sessionID: SessionID, state: History<AppState>, action: Action) throws {
+    guard let path = saveFilePath(sessionID) else {
+        throw AppStateError("Unable to find save file.")
+    }
+    let data = try stateToJSON(state.current.state)
+    data.writeToFile(path, atomically: true)
+}
+
+public func appStateDeserializer(sessionID: SessionID) throws -> History<AppState> {
+    guard let path = saveFilePath(sessionID), data = NSData(contentsOfFile: path) else {
+        throw AppStateError("Unable to read save file.")
+    }
+    let state = try jsonToState(data)
+    return History(state: state)
+}
+
+let appStatePersister = Persister<History<AppState>>(stateSerializer: appStateSerializer, stateDeserializer: appStateDeserializer)
+
+private func saveFilePath(sessionID: SessionID) -> String? {
+    guard let dir = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first else { return nil }
+    let filename = sessionID + ".json"
+    return (dir as NSString).stringByAppendingPathComponent(filename)
+}
+
+private func stateToJSON(state: AppState) throws -> NSData {
+    var todos = [[String:AnyObject]]()
+    
+    for todo in state.todos {
+        todos.append([
+            "text": todo.text,
+            "completed": todo.completed,
+            ])
+    }
+    let dict: [String:AnyObject] = [
+        "counter": state.counter,
+        "todos": todos,
+    ]
+    
+    return try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
+}
+
+private func jsonToState(data: NSData) throws -> AppState {
+    let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+    
+    guard let counter = json["counter"] as? Int, todoDicts = json["todos"] as? [[String:AnyObject]] else {
+        throw AppStateError("Unable to parse save file.")
+    }
+    
+    var todos = [ToDo]()
+    
+    for todoDict in todoDicts {
+        if let text = todoDict["text"] as? String, completed = todoDict["completed"] as? Bool {
+            todos.append(ToDo(text: text, completed: completed))
+        }
+    }
+    
+    return AppState(counter: counter, todos: todos)
+}
