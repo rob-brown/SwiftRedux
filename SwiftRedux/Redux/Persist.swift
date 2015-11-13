@@ -24,6 +24,8 @@ public struct Persister<T> {
     }
 }
 
+private let queue = dispatch_queue_create("redux.swift.persist", DISPATCH_QUEUE_SERIAL)
+
 public struct Persist<T> {
     public static func enhancer(sessionID: SessionID, persister: Persister<T>) -> StoreEnhancer<T,T> {
         return StoreEnhancer<T,T> { (next: StoreCreator<T>) in
@@ -42,11 +44,14 @@ public struct Persist<T> {
                 store.replaceDispatchFunction { action in
                     try dispatcher(action)
                     let newState = store.currentState()
-                    do {
-                        try persister.stateSerializer(sessionID, newState, action)
-                    }
-                    catch {
-                        NSLog("ERROR: Unable to persist state.")
+                    
+                    dispatch_async(queue) {
+                        do {
+                            try persister.stateSerializer(sessionID, newState, action)
+                        }
+                        catch {
+                            NSLog("ERROR: Unable to persist state.")
+                        }
                     }
                     
                     return action
