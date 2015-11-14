@@ -24,10 +24,10 @@ public struct Persister<T> {
     }
 }
 
-private let queue = dispatch_queue_create("redux.swift.persist", DISPATCH_QUEUE_SERIAL)
-
 public struct Persist<T> {
-    public static func enhancer(sessionID: SessionID, persister: Persister<T>) -> StoreEnhancer<T,T> {
+    public static func apply(sessionID: SessionID, persister: Persister<T>) -> StoreEnhancer<T,T> {
+        let queue = dispatch_queue_create("redux.swift.persist", DISPATCH_QUEUE_SERIAL)
+        
         return StoreEnhancer<T,T> { (next: StoreCreator<T>) in
             return StoreCreator<T> { (reducer: Reducer<T>, initialState: T) in
                 let state: T

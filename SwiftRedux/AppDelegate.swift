@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: Create a pipe operator to clean up function composition.
         
         let middlewareStoreCreator = Middleware.apply(middlewares).enhance(createStore)
-        let augmentedCreater = Persist.enhancer("A session ID", persister: appStatePersister).enhance(middlewareStoreCreator)
+        let augmentedCreater = Persist.apply("A session ID", persister: appStatePersister).enhance(middlewareStoreCreator)
         
         let initialState = History(state: AppState(counter: 0, todos: []))
         let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
