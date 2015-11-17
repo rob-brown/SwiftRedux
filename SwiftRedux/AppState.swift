@@ -11,15 +11,22 @@ import Foundation
 public class AppState {
     public let counter: Int
     public let todos: [ToDo]
+    public let randomNumber: Int
+    public let randomNumberLoading: Bool
     
-    public init(counter: Int, todos: [ToDo]) {
+    public init(counter: Int, todos: [ToDo], randomNumber: Int, randomNumberLoading: Bool = false) {
         self.counter = counter
         self.todos = todos
+        self.randomNumber = randomNumber
+        self.randomNumberLoading = randomNumberLoading
     }
 }
 
 public func ==(lhs: AppState, rhs: AppState) -> Bool {
-    return lhs.counter == rhs.counter && lhs.todos == rhs.todos
+    return (lhs.counter == rhs.counter &&
+        lhs.todos == rhs.todos &&
+        lhs.randomNumber == rhs.randomNumber &&
+        lhs.randomNumberLoading == rhs.randomNumberLoading)
 }
 
 extension AppState: Equatable {}
@@ -68,6 +75,7 @@ private func stateToJSON(state: AppState) throws -> NSData {
     let dict: [String:AnyObject] = [
         "counter": state.counter,
         "todos": todos,
+        "randomNumber": state.randomNumber,
     ]
     
     return try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
@@ -76,7 +84,7 @@ private func stateToJSON(state: AppState) throws -> NSData {
 private func jsonToState(data: NSData) throws -> AppState {
     let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
     
-    guard let counter = json["counter"] as? Int, todoDicts = json["todos"] as? [[String:AnyObject]] else {
+    guard let counter = json["counter"] as? Int, todoDicts = json["todos"] as? [[String:AnyObject]], randomNumber = json["randomNumber"] as? Int else {
         throw AppStateError("Unable to parse save file.")
     }
     
@@ -88,5 +96,5 @@ private func jsonToState(data: NSData) throws -> AppState {
         }
     }
     
-    return AppState(counter: counter, todos: todos)
+    return AppState(counter: counter, todos: todos, randomNumber: randomNumber)
 }

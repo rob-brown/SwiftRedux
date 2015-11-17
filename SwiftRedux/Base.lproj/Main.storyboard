@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoV-6r-ALk">
-                                <rect key="frame" x="264" y="282" width="72.5" height="36"/>
+                                <rect key="frame" x="264" y="282" width="73" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,11 +67,12 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="YqK-cN-4Qx"/>
                         <segue destination="GVZ-l2-aaQ" kind="relationship" relationship="viewControllers" id="cBS-t3-kXP"/>
+                        <segue destination="Mk9-qq-ae9" kind="relationship" relationship="viewControllers" id="Cj5-oq-0sQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHL-Fq-13Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1021" y="1000"/>
+            <point key="canvasLocation" x="-1043" y="1419"/>
         </scene>
         <!--To Do-->
         <scene sceneID="A3K-88-ojO">
@@ -135,6 +136,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yhI-2r-65Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-202" y="1419"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="TAY-bk-GIu">
+            <objects>
+                <viewController id="Mk9-qq-ae9" customClass="AsyncViewController" customModule="SwiftRedux" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n1q-cX-6nT"/>
+                        <viewControllerLayoutGuide type="bottom" id="QIN-td-aWb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xJ6-Zf-fZk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOB-j4-iqf">
+                                <rect key="frame" x="235" y="290" width="129.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gh5-08-YpQ">
+                                <rect key="frame" x="268" y="319" width="64" height="30"/>
+                                <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="tappedGenerate:" destination="Mk9-qq-ae9" eventType="touchUpInside" id="zs9-zW-I5x"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZkD-tM-58y">
+                                <rect key="frame" x="290" y="261" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MOB-j4-iqf" firstAttribute="top" secondItem="ZkD-tM-58y" secondAttribute="bottom" constant="8.5" id="Lgp-16-gvi"/>
+                            <constraint firstItem="ZkD-tM-58y" firstAttribute="centerX" secondItem="xJ6-Zf-fZk" secondAttribute="centerX" id="OOm-n8-h2k"/>
+                            <constraint firstItem="MOB-j4-iqf" firstAttribute="centerX" secondItem="xJ6-Zf-fZk" secondAttribute="centerX" id="RwD-El-Chp"/>
+                            <constraint firstItem="Gh5-08-YpQ" firstAttribute="top" secondItem="MOB-j4-iqf" secondAttribute="bottom" constant="8" id="Wte-hr-eWa"/>
+                            <constraint firstItem="MOB-j4-iqf" firstAttribute="centerY" secondItem="xJ6-Zf-fZk" secondAttribute="centerY" id="hMq-0n-FyH"/>
+                            <constraint firstItem="Gh5-08-YpQ" firstAttribute="centerX" secondItem="MOB-j4-iqf" secondAttribute="centerX" id="lrA-I1-ufB"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="b3J-IB-QeI"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ZkD-tM-58y" id="sAC-xV-AYz"/>
+                        <outlet property="randomNumberLabel" destination="MOB-j4-iqf" id="dj2-n3-3HM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2V-HB-Ceg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-202" y="2135"/>
         </scene>
     </scenes>
 </document>

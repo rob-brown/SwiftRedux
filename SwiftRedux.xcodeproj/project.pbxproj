@@ -19,6 +19,10 @@
 		E1E914061BF43D8200FD3BA9 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914051BF43D8200FD3BA9 /* Persist.swift */; };
 		E1E914081BF45B2D00FD3BA9 /* StoreEnhancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914071BF45B2D00FD3BA9 /* StoreEnhancer.swift */; };
 		E1E9140A1BF464A200FD3BA9 /* StoreCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914091BF464A200FD3BA9 /* StoreCreator.swift */; };
+		E1E914121BF6F23A00FD3BA9 /* Thunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914111BF6F23A00FD3BA9 /* Thunk.swift */; };
+		E1E914141BF84A5E00FD3BA9 /* AsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */; };
+		E1E914161BF854DB00FD3BA9 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914151BF854DB00FD3BA9 /* Random.swift */; };
+		E1E914181BF862A400FD3BA9 /* GCDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914171BF862A400FD3BA9 /* GCDExtension.swift */; };
 		E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */; };
 		E1F1F5EB1BE19A1F00F6B879 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */; };
 		E1F1F5EE1BE19A1F00F6B879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */; };
@@ -62,6 +66,10 @@
 		E1E914051BF43D8200FD3BA9 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persist.swift; path = Redux/Persist.swift; sourceTree = "<group>"; };
 		E1E914071BF45B2D00FD3BA9 /* StoreEnhancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreEnhancer.swift; path = Redux/StoreEnhancer.swift; sourceTree = "<group>"; };
 		E1E914091BF464A200FD3BA9 /* StoreCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreCreator.swift; path = Redux/StoreCreator.swift; sourceTree = "<group>"; };
+		E1E914111BF6F23A00FD3BA9 /* Thunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thunk.swift; path = Redux/Thunk.swift; sourceTree = "<group>"; };
+		E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncViewController.swift; sourceTree = "<group>"; };
+		E1E914151BF854DB00FD3BA9 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		E1E914171BF862A400FD3BA9 /* GCDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDExtension.swift; sourceTree = "<group>"; };
 		E1F1F5E51BE19A1F00F6B879 /* SwiftRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
@@ -134,10 +142,13 @@
 				E15350CD1BE471B700211F6D /* AppState.swift */,
 				E11297A71BE2F426003B6C2A /* Counter.swift */,
 				E11297AB1BE32987003B6C2A /* ToDo.swift */,
+				E1E914151BF854DB00FD3BA9 /* Random.swift */,
 				E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */,
 				E15350CB1BE46EE300211F6D /* ToDoViewController.swift */,
 				E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */,
+				E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */,
 				E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */,
+				E1E914171BF862A400FD3BA9 /* GCDExtension.swift */,
 				E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */,
 				E1F1F5EF1BE19A1F00F6B879 /* Assets.xcassets */,
 				E1F1F5F11BE19A1F00F6B879 /* LaunchScreen.storyboard */,
@@ -177,6 +188,7 @@
 				E100C8FC1BEDD6E2008B83E3 /* DiffNotifier.swift */,
 				E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */,
 				E1E914051BF43D8200FD3BA9 /* Persist.swift */,
+				E1E914111BF6F23A00FD3BA9 /* Thunk.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -317,18 +329,22 @@
 				E1E914061BF43D8200FD3BA9 /* Persist.swift in Sources */,
 				E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */,
 				E15350CE1BE471B700211F6D /* AppState.swift in Sources */,
+				E1E914121BF6F23A00FD3BA9 /* Thunk.swift in Sources */,
 				E100C8FD1BEDD6E2008B83E3 /* DiffNotifier.swift in Sources */,
 				E1E914081BF45B2D00FD3BA9 /* StoreEnhancer.swift in Sources */,
+				E1E914141BF84A5E00FD3BA9 /* AsyncViewController.swift in Sources */,
 				E100C8FB1BEDC25C008B83E3 /* History.swift in Sources */,
 				E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */,
 				E1F1F6181BE19AA500F6B879 /* Store.swift in Sources */,
 				E1F1F61A1BE19AB300F6B879 /* Action.swift in Sources */,
+				E1E914181BF862A400FD3BA9 /* GCDExtension.swift in Sources */,
 				E1F1F6201BE1E7ED00F6B879 /* Middleware.swift in Sources */,
 				E15350CC1BE46EE300211F6D /* ToDoViewController.swift in Sources */,
 				E1F1F6221BE1E98800F6B879 /* Reducer.swift in Sources */,
 				E1F1F5EB1BE19A1F00F6B879 /* CounterViewController.swift in Sources */,
 				E11297A81BE2F426003B6C2A /* Counter.swift in Sources */,
 				E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */,
+				E1E914161BF854DB00FD3BA9 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

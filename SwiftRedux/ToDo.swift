@@ -54,17 +54,17 @@ let toDoReducer = Reducer<[ToDo]> { state, action in
     
     switch actionType {
     case .CreateToDo:
-        guard let action = action as? StandardAction, text = action.payload as? String else { break }
+        guard let text = action.payload as? String else { break }
         let todo = ToDo(text: text)
         return [todo] + state
     case .MarkCompleted:
-        guard let action = action as? StandardAction, index = action.payload as? Int else { break }
+        guard let index = action.payload as? Int else { break }
         var mutableTodos = state
         let todo = mutableTodos.removeAtIndex(index)
         let completed = ToDo(original: todo, completed: true)
         return mutableTodos + [completed]
     case .Restart:
-        guard let action = action as? StandardAction, index = action.payload as? Int else { break }
+        guard let index = action.payload as? Int else { break }
         var mutableTodos = state
         let todo = mutableTodos.removeAtIndex(index)
         let restarted = ToDo(original: todo, completed: false)

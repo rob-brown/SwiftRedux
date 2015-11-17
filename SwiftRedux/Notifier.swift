@@ -15,6 +15,8 @@ public class Notifier {
     public let todoNotifier: DiffListNotifier<ToDo>
     public let canUndoNotifier: DiffNotifier<Bool>
     public let canRedoNotifier: DiffNotifier<Bool>
+    public let randomNumberNotifier: DiffNotifier<Int>
+    public let randomNumberLoadingNotifier: DiffNotifier<Bool>
     private var unsubscriber: Unsubscriber?
     
     public init(store: Store<History<AppState>>) {
@@ -22,6 +24,8 @@ public class Notifier {
         self.stateNotifier = DiffNotifier(store.currentState().current.state)
         self.counterNotifier = DiffNotifier(store.currentState().current.state.counter)
         self.todoNotifier = DiffListNotifier(store.currentState().current.state.todos)
+        self.randomNumberNotifier = DiffNotifier(store.currentState().current.state.randomNumber)
+        self.randomNumberLoadingNotifier = DiffNotifier(store.currentState().current.state.randomNumberLoading)
         self.canUndoNotifier = DiffNotifier(store.currentState().canUndo())
         self.canRedoNotifier = DiffNotifier(store.currentState().canRedo())
         self.unsubscriber = store.subscribe(self.stateChanged)
@@ -36,6 +40,8 @@ public class Notifier {
         stateNotifier.currentState = state.current.state
         counterNotifier.currentState = state.current.state.counter
         todoNotifier.currentState = state.current.state.todos
+        randomNumberNotifier.currentState = state.current.state.randomNumber
+        randomNumberLoadingNotifier.currentState = state.current.state.randomNumberLoading
         canUndoNotifier.currentState = state.canUndo()
         canRedoNotifier.currentState = state.canRedo()
     }
