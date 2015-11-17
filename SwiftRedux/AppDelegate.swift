@@ -26,16 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let rootReducer = historyReducerCreator(appStateReducer)
         let middlewares: [Middleware<State>] = [Thunk<State>.middleware()]
-        let createStore = StoreCreator<State>(function: Store<State>.createStore)
         let sessionID = "A session ID"
         
-        // TODO: Create a pipe operator to clean up function composition.
-        
-        let persistStoreCreator = Persist.apply(sessionID, persister: appStatePersister).enhance(createStore)
-        let augmentedCreater = Middleware.apply(middlewares).enhance(persistStoreCreator)
+        // Sets up the store
+        // When an action is dispatched, the StoreEnhancers work in this order:
+        // 1. Middleware
+        // 2. Persist
+        // 3. Store
+        let storeCreator = StoreCreator<State>(function: Store<State>.createStore)
+        |> Persist.apply(sessionID, persister: appStatePersister).enhance
+        |> Middleware.apply(middlewares).enhance
         
         let initialState = History(state: AppState(counter: 0, todos: [], randomNumber: 0))
-        let store = augmentedCreater.createStore(reducer: rootReducer, initialState: initialState)
+        let store = storeCreator.createStore(reducer: rootReducer, initialState: initialState)
         let notifier = Notifier(store: store)
         
         if let tabController = window?.rootViewController as? UITabBarController {

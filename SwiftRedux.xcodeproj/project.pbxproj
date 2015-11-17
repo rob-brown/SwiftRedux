@@ -23,6 +23,7 @@
 		E1E914141BF84A5E00FD3BA9 /* AsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */; };
 		E1E914161BF854DB00FD3BA9 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914151BF854DB00FD3BA9 /* Random.swift */; };
 		E1E914181BF862A400FD3BA9 /* GCDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914171BF862A400FD3BA9 /* GCDExtension.swift */; };
+		E1E9141C1BFB085C00FD3BA9 /* Compose.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E9141B1BFB085C00FD3BA9 /* Compose.swift */; };
 		E1F1F5E91BE19A1F00F6B879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */; };
 		E1F1F5EB1BE19A1F00F6B879 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */; };
 		E1F1F5EE1BE19A1F00F6B879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F1F5EC1BE19A1F00F6B879 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncViewController.swift; sourceTree = "<group>"; };
 		E1E914151BF854DB00FD3BA9 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		E1E914171BF862A400FD3BA9 /* GCDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDExtension.swift; sourceTree = "<group>"; };
+		E1E9141B1BFB085C00FD3BA9 /* Compose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Compose.swift; path = Redux/Compose.swift; sourceTree = "<group>"; };
 		E1F1F5E51BE19A1F00F6B879 /* SwiftRedux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRedux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1F1F5EA1BE19A1F00F6B879 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				E1E913E71BF30C1D00FD3BA9 /* ArrayExtension.swift */,
 				E1E914051BF43D8200FD3BA9 /* Persist.swift */,
 				E1E914111BF6F23A00FD3BA9 /* Thunk.swift */,
+				E1E9141B1BFB085C00FD3BA9 /* Compose.swift */,
 			);
 			name = Redux;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				E11297AC1BE32987003B6C2A /* ToDo.swift in Sources */,
 				E1E9140A1BF464A200FD3BA9 /* StoreCreator.swift in Sources */,
 				E1E914061BF43D8200FD3BA9 /* Persist.swift in Sources */,
+				E1E9141C1BFB085C00FD3BA9 /* Compose.swift in Sources */,
 				E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */,
 				E15350CE1BE471B700211F6D /* AppState.swift in Sources */,
 				E1E914121BF6F23A00FD3BA9 /* Thunk.swift in Sources */,
