@@ -27,13 +27,12 @@ public struct AsyncAction<T>: Action {
 public struct Thunk<T> {
     public static func middleware() -> Middleware<T> {
         return Middleware { (dispatch, currentState) -> Dispatch -> Dispatch in
-            return { next in
-                return { action in
-                    guard let asyncAction = action as? AsyncAction<T> else {
-                        return (try? next(action)) ?? action
-                    }
-                    asyncAction.function(dispatch, currentState)
-                    return action
+            { next in { action in
+                guard let asyncAction = action as? AsyncAction<T> else {
+                    return (try? next(action)) ?? action
+                }
+                asyncAction.function(dispatch, currentState)
+                return action
                 }
             }
         }

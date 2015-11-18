@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let rootReducer = historyReducerCreator(appStateReducer)
-        let middlewares: [Middleware<State>] = [Thunk<State>.middleware()]
+        let middlewares: [Middleware<State>] = [Thunk.middleware(), Logger.middleware()]
         let sessionID = "A session ID"
         
         // Sets up the store
