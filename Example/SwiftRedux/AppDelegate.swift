@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let rootReducer = historyReducerCreator(appStateReducer)
-        let middlewares: [Middleware<State>] = [Thunk.middleware(), Logger.middleware()]
+        let middlewares: [Middleware<State>] = [Logger.middleware(), Thunk.middleware()]
         let sessionID = "A session ID"
         
         // Sets up the store
@@ -44,21 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let tabController = window?.rootViewController as? UITabBarController {
             
-            if let viewController = tabController.viewControllers![0] as? CounterViewController {
-                viewController.store = store
-                viewController.notifier = notifier
-            }
-            
-            if let navController = tabController.viewControllers![1] as? UINavigationController {
-                if let viewController = navController.topViewController as? ToDoViewController {
-                    viewController.store = store
-                    viewController.notifier = notifier
+            for viewController in tabController.viewControllers ?? [] {
+                var target: ReduxTarget?
+                if let viewController = viewController as? ReduxTarget {
+                    target = viewController
                 }
-            }
-            
-            if let viewController = tabController.viewControllers![2] as? AsyncViewController {
-                viewController.store = store
-                viewController.notifier = notifier
+                else if let navController = viewController as? UINavigationController {
+                    if let viewController = navController.topViewController as? ReduxTarget {
+                        target = viewController
+                    }
+                }
+                target?.store = store
+                target?.notifier = notifier
             }
         }
         

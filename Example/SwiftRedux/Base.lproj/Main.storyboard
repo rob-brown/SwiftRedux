@@ -54,6 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-202" y="742"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5oN-PI-El3">
@@ -137,7 +138,7 @@
             </objects>
             <point key="canvasLocation" x="-202" y="1419"/>
         </scene>
-        <!--Item-->
+        <!--Async-->
         <scene sceneID="TAY-bk-GIu">
             <objects>
                 <viewController id="Mk9-qq-ae9" customClass="AsyncViewController" customModule="SwiftRedux" customModuleProvider="target" sceneMemberID="viewController">
@@ -176,7 +177,7 @@
                             <constraint firstItem="Gh5-08-YpQ" firstAttribute="centerX" secondItem="MOB-j4-iqf" secondAttribute="centerX" id="lrA-I1-ufB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="b3J-IB-QeI"/>
+                    <tabBarItem key="tabBarItem" title="Async" id="b3J-IB-QeI"/>
                     <connections>
                         <outlet property="activityIndicator" destination="ZkD-tM-58y" id="sAC-xV-AYz"/>
                         <outlet property="randomNumberLabel" destination="MOB-j4-iqf" id="dj2-n3-3HM"/>
@@ -184,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2V-HB-Ceg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="2135"/>
+            <point key="canvasLocation" x="-202" y="2099"/>
         </scene>
     </scenes>
 </document>

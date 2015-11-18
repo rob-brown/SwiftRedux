@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoViewController: UITableViewController {
+class ToDoViewController: UITableViewController, ReduxTarget {
     
     @IBOutlet weak var undoButton: UIBarButtonItem?
     @IBOutlet weak var redoButton: UIBarButtonItem?

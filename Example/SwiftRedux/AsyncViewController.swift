@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AsyncViewController: UIViewController {
+class AsyncViewController: UIViewController, ReduxTarget {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
     @IBOutlet weak var randomNumberLabel: UILabel?
     

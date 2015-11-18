@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CounterViewController: UIViewController {
+class CounterViewController: UIViewController, ReduxTarget {
 
     @IBOutlet weak var counterLabel: UILabel!
     var store: Store<History<AppState>>?

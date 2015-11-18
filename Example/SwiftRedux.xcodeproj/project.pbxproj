@@ -24,6 +24,7 @@
 		E17518541BFC17DE005A6807 /* StoreEnhancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17518481BFC17DE005A6807 /* StoreEnhancer.swift */; };
 		E17518551BFC17DE005A6807 /* Thunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17518491BFC17DE005A6807 /* Thunk.swift */; };
 		E17518591BFC1901005A6807 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17518581BFC1901005A6807 /* Logger.swift */; };
+		E175185B1BFC1C59005A6807 /* ReduxTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E175185A1BFC1C59005A6807 /* ReduxTarget.swift */; };
 		E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */; };
 		E1E913E61BF2DDBF00FD3BA9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */; };
 		E1E914141BF84A5E00FD3BA9 /* AsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */; };
@@ -73,6 +74,7 @@
 		E17518481BFC17DE005A6807 /* StoreEnhancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreEnhancer.swift; path = ../../Source/StoreEnhancer.swift; sourceTree = "<group>"; };
 		E17518491BFC17DE005A6807 /* Thunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thunk.swift; path = ../../Source/Thunk.swift; sourceTree = "<group>"; };
 		E17518581BFC1901005A6807 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = ../../Source/Logger.swift; sourceTree = "<group>"; };
+		E175185A1BFC1C59005A6807 /* ReduxTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReduxTarget.swift; sourceTree = "<group>"; };
 		E17F448E1BEC3E9E00AF1F86 /* Notifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifier.swift; sourceTree = "<group>"; };
 		E1E913E51BF2DDBF00FD3BA9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E1E914131BF84A5E00FD3BA9 /* AsyncViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				E1F1F6161BE19A8C00F6B879 /* Redux */,
 				E1F1F5E81BE19A1F00F6B879 /* AppDelegate.swift */,
 				E15350CD1BE471B700211F6D /* AppState.swift */,
+				E175185A1BFC1C59005A6807 /* ReduxTarget.swift */,
 				E11297A71BE2F426003B6C2A /* Counter.swift */,
 				E11297AB1BE32987003B6C2A /* ToDo.swift */,
 				E1E914151BF854DB00FD3BA9 /* Random.swift */,
@@ -336,6 +339,7 @@
 				E175184D1BFC17DE005A6807 /* DiffNotifier.swift in Sources */,
 				E17F448F1BEC3E9E00AF1F86 /* Notifier.swift in Sources */,
 				E17518511BFC17DE005A6807 /* Reducer.swift in Sources */,
+				E175185B1BFC1C59005A6807 /* ReduxTarget.swift in Sources */,
 				E17518591BFC1901005A6807 /* Logger.swift in Sources */,
 				E15350CE1BE471B700211F6D /* AppState.swift in Sources */,
 				E1E914141BF84A5E00FD3BA9 /* AsyncViewController.swift in Sources */,
