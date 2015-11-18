@@ -33,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 1. Middleware
         // 2. Persist
         // 3. Store
-        let storeCreator = StoreCreator<State>(function: Store<State>.createStore)
-        |> Persist.apply(sessionID, persister: appStatePersister).enhance
-        |> Middleware.apply(middlewares).enhance
+        let storeCreator =
+        StoreCreator<State>(function: Store<State>.createStore)
+        |> Persist.apply(sessionID, persister: appStatePersister)
+        |> Middleware.apply(middlewares)
         
         let initialState = History(state: AppState(counter: 0, todos: [], randomNumber: 0))
         let store = storeCreator.createStore(reducer: rootReducer, initialState: initialState)

@@ -10,6 +10,6 @@ import Foundation
 
 infix operator |> { precedence 50 associativity left }
 
-public func |> <A,Z>(lhs: A, rhs: A -> Z) -> Z {
-    return rhs(lhs)
+public func |> <T,U>(lhs: StoreCreator<T>, rhs: StoreEnhancer<T,U>) -> StoreCreator<U> {
+    return rhs.enhance(lhs)
 }
