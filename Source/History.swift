@@ -97,7 +97,7 @@ public struct History<T> {
     }
     
     public func jumpForward(steps: Int) throws -> History<T> {
-        guard steps < future.count && steps > 0 else {
+        guard steps <= future.count && steps > 0 else {
             throw HistoryError(message: "Invalid number of steps: \(steps)")
         }
         let newFuture = future.drop(steps)
